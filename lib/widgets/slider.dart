@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class SliderButton extends StatefulWidget {
@@ -10,13 +8,19 @@ class SliderButton extends StatefulWidget {
 }
 
 class _SliderState extends State<SliderButton> {
+  double ralValue = 0;
+
   @override
   Widget build(BuildContext context) {
     return Slider(
-      value: 0,
+      value: ralValue,
       min: 0,
       max: 40000,
-      onChanged: (value) => print(value),
+      // valore fra i vari step:
+      divisions: 1000,
+      //valore visualizzato:
+      label: ralValue.toStringAsFixed(0),
+      onChanged: (value) => setState(() => ralValue = value),
     );
   }
 }
